@@ -1,0 +1,26 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}Add Track Version | Music Production Manager{% endblock %}
+
+{% block content %}
+    <h1 class="display-5 fw-bold mb-4">Add Track Version</h1>
+
+    <p class="text-muted">
+        Project: <strong>{{ project.title }}</strong>
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">
+            Save Version
+        </button>
+
+        <a href="{% url 'project_detail' project.pk %}"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+{% endblock %}

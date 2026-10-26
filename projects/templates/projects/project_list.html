@@ -1,0 +1,135 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}
+Projects | Music Production Manager
+{% endblock %}
+
+{% block content %}
+
+<form method="get" class="mb-4">
+    <div class="row g-2">
+        <div class="col-md-5">
+            <input
+                    type="text"
+                    name="search"
+                    class="form-control"
+                    placeholder="Search projects..."
+                    value="{{ request.GET.search|default:'' }}"
+            >
+        </div>
+
+        <div class="col-md-3">
+            <select name="genre" class="form-select">
+                <option value="">All genres</option>
+
+                {% for genre in genres %}
+                <option value="{{ genre.id }}">
+                    {{ genre.name }}
+                </option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <select name="status" class="form-select">
+                <option value="">All statuses</option>
+
+                {% for value, label in statuses %}
+                <option
+                        value="{{ value }}"
+                        {% if request.GET.status == value %}selected{% endif %}
+                >
+                    {{ label }}
+                </option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">
+                Search
+            </button>
+        </div>
+    </div>
+</form>
+
+<h1 class="display-5 fw-bold">My Music Projects</h1>
+
+<p class="lead text-muted">
+    Here you will manage all your music projects.
+</p>
+
+{% if projects %}
+<div class="row mt-4">
+    {% for project in projects %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'project_detail' project.pk %}" class="text-decoration-none">
+                        {{ project.title }}
+                    </a>
+                </h5>
+
+                <p class="card-text">
+                    <strong>Genre:</strong> {{ project.genre|default:"Not specified" }}<br>
+                    <strong>Status:</strong> {{ project.get_status_display }}<br>
+                    <strong>BPM:</strong> {{ project.bpm|default:"—" }}<br>
+                    <strong>Key:</strong> {{ project.musical_key|default:"—" }}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if page_obj.has_other_pages %}
+    <nav aria-label="Project pages" class="mt-4">
+        <ul class="pagination justify-content-center">
+
+            {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?{% if request.GET.search %}search={{ request.GET.search|urlencode }}&{% endif %}{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.status %}status={{ request.GET.status }}&{% endif %}page={{ page_obj.previous_page_number }}">
+                        Previous
+                    </a>
+                </li>
+            {% endif %}
+
+            <li class="page-item active">
+                <span class="page-link">
+                    {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+                </span>
+            </li>
+
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?{% if request.GET.search %}search={{ request.GET.search|urlencode }}&{% endif %}{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.status %}status={{ request.GET.status }}&{% endif %}page={{ page_obj.next_page_number }}">
+                        Next
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+{% endif %}
+
+{% else %}
+<div class="card mt-4">
+    <div class="card-body text-center py-5">
+        <h5 class="card-title">No Projects Yet</h5>
+        <p class="card-text text-muted">
+            Your music projects will appear here once you create them.
+        </p>
+    </div>
+</div>
+{% endif %}
+
+<a href="{% url 'project_create' %}" class="btn btn-primary mb-4">
+    Create New Project
+</a>
+
+{% endblock %}

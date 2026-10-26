@@ -1,0 +1,29 @@
+
+{% extends 'projects/base.html' %}
+
+{% block title %}Delete Track Version | Music Production Manager{% endblock %}
+
+{% block content %}
+    <h1 class="display-5 fw-bold mb-4">Delete Track Version</h1>
+
+    <div class="alert alert-warning">
+        Are you sure you want to delete this track version?
+    </div>
+
+    <p>
+        Version: <strong>{{ version.name }}</strong>
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger">
+            Yes, Delete
+        </button>
+
+        <a href="{% url 'project_detail' project.pk %}"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+{% endblock %}

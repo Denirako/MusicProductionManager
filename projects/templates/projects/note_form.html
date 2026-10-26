@@ -1,0 +1,26 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}Add Note | Music Production Manager{% endblock %}
+
+{% block content %}
+    <h1 class="display-5 fw-bold mb-4">Add Note</h1>
+
+    <p class="lead">
+        Add a note to <strong>{{ project.title }}</strong>
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">
+            Save Note
+        </button>
+
+        <a href="{% url 'project_detail' project.pk %}"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+{% endblock %}

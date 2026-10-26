@@ -1,0 +1,24 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}
+    Home | Music Production Manager
+{% endblock %}
+
+{% block content %}
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-4">
+            <h1 class="display-5 fw-bold">
+                Welcome to Music Production Manager!
+            </h1>
+
+            <p class="col-md-8 fs-4">
+                Your personal space for managing music projects.
+                Organize your ideas, tracks, tasks and releases in one place.
+            </p>
+
+            <a href="{% url 'project_list' %}" class="btn btn-primary btn-lg">
+                View My Projects
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,214 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}{{ project.title }} | Music Production Manager{% endblock %}
+
+{% block content %}
+<h1 class="display-5 fw-bold mb-4">{{ project.title }}</h1>
+
+{% if project.cover %}
+<img
+        src="{{ project.cover.url }}"
+        alt="{{ project.title }}"
+        class="img-fluid rounded mb-4"
+        style="max-width: 400px;"
+>
+{% endif %}
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Project Details</h5>
+
+        <p>
+            <strong>Genre:</strong>
+            {{ project.genre|default:"Not specified" }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ project.get_status_display }}
+        </p>
+
+        <p>
+            <strong>BPM:</strong>
+            {{ project.bpm|default:"—" }}
+        </p>
+
+        <p>
+            <strong>Musical Key:</strong>
+            {{ project.musical_key|default:"—" }}
+        </p>
+
+        <p>
+            <strong>Release Date:</strong>
+            {{ project.release_date|default:"—" }}
+        </p>
+
+        <p>
+            <strong>Duration:</strong>
+            {{ project.duration|default:"—" }} seconds
+        </p>
+
+        <hr>
+
+        <h5>Description</h5>
+
+        <p>
+            {{ project.description|default:"No description yet." }}
+        </p>
+
+        <hr>
+
+        <h5>Tasks</h5>
+
+        <a href="{% url 'task_create' project.pk %}" class="btn btn-primary mb-3">
+            Add Task
+        </a>
+
+        {% if tasks %}
+        <ul class="list-group mb-4">
+            {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ task.title }}</strong>
+
+                    {% if task.description %}
+                    <br>
+                    <small class="text-muted">
+                        {{ task.description }}
+                    </small>
+                    {% endif %}
+
+                    {% if task.due_date %}
+                    <br>
+                    <small class="text-muted">
+                        Due: {{ task.due_date|date:"M d, Y" }}
+                    </small>
+                    {% endif %}
+                </div>
+
+                <div>
+                    <span class="badge bg-secondary">
+                        {{ task.get_status_display }}
+                    </span>
+
+                    <a href="{% url 'task_edit' task.pk %}"
+                       class="btn btn-sm btn-outline-primary ms-2">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'task_delete' task.pk %}"
+                       class="btn btn-sm btn-outline-danger ms-1">
+                        Delete
+                    </a>
+                </div>
+
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">
+            No tasks yet.
+        </p>
+        {% endif %}
+
+        <hr>
+
+        <h5>Notes</h5>
+
+        <a href="{% url 'note_create' project.pk %}" class="btn btn-primary mb-3">
+            Add Note
+        </a>
+
+        {% if notes %}
+        {% for note in notes %}
+        <div class="list-group-item">
+            <h6 class="mb-1">{{ note.title }}</h6>
+
+            <p class="mb-1">
+                {{ note.content }}
+            </p>
+
+            <small class="text-muted">
+                Updated: {{ note.updated_at|date:"M d, Y H:i" }}
+            </small>
+
+            <div class="mt-2">
+                <a href="{% url 'note_edit' note.id %}"
+                   class="btn btn-sm btn-outline-primary">
+                    Edit
+                </a>
+
+                <a href="{% url 'note_delete' note.id %}"
+                   class="btn btn-sm btn-outline-danger ms-1">
+                    Delete
+                </a>
+
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="text-muted">
+            No notes yet.
+        </p>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<hr class="my-4">
+
+<div class="mb-4">
+    <h4 class="mb-3">Track Versions</h4>
+
+    <a href="{% url 'track_version_create' project.pk %}"
+       class="btn btn-primary mb-3">
+        Add Version
+    </a>
+
+    {% for version in versions %}
+    <div class="card mb-2">
+        <div class="card-body">
+            <h6 class="card-title">{{ version.name }}</h6>
+
+            {% if version.description %}
+            <p class="card-text">{{ version.description }}</p>
+            {% endif %}
+
+            <small class="text-muted">
+                Created: {{ version.created_at|date:"d.m.Y H:i" }}
+            </small>
+
+
+            <div class="mt-3">
+                <a href="{% url 'track_version_edit' version.pk %}"
+                   class="btn btn-outline-primary btn-sm">
+                    Edit
+                </a>
+
+                <a href="{% url 'track_version_delete' version.pk %}"
+                   class="btn btn-outline-danger btn-sm">
+                    Delete
+                </a>
+            </div>
+
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">No track versions yet.</p>
+    {% endfor %}
+</div>
+
+
+<a href="{% url 'project_edit' project.pk %}" class="btn btn-primary mt-4">
+    Edit Project
+</a>
+
+<a href="{% url 'project_delete' project.pk %}" class="btn btn-danger mt-4">
+    Delete Project
+</a>
+
+<a href="{% url 'project_list' %}" class="btn btn-secondary mt-4">
+    Back to Projects
+</a>
+{% endblock %}
