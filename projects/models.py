@@ -17,6 +17,33 @@ class MusicProject(models.Model):
         ('RELEASED', 'Released'),
     ]
 
+    MUSICAL_KEY_CHOICES = [
+        ('C major', 'C major'),
+        ('C minor', 'C minor'),
+        ('C# major', 'C# major'),
+        ('C# minor', 'C# minor'),
+        ('D major', 'D major'),
+        ('D minor', 'D minor'),
+        ('D# major', 'D# major'),
+        ('D# minor', 'D# minor'),
+        ('E major', 'E major'),
+        ('E minor', 'E minor'),
+        ('F major', 'F major'),
+        ('F minor', 'F minor'),
+        ('F# major', 'F# major'),
+        ('F# minor', 'F# minor'),
+        ('G major', 'G major'),
+        ('G minor', 'G minor'),
+        ('G# major', 'G# major'),
+        ('G# minor', 'G# minor'),
+        ('A major', 'A major'),
+        ('A minor', 'A minor'),
+        ('A# major', 'A# major'),
+        ('A# minor', 'A# minor'),
+        ('B major', 'B major'),
+        ('B minor', 'B minor'),
+    ]
+
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     genre = models.ForeignKey(
@@ -44,6 +71,7 @@ class MusicProject(models.Model):
 
     musical_key = models.CharField(
         max_length=20,
+        choices=MUSICAL_KEY_CHOICES,
         blank=True
     )
 
@@ -55,6 +83,7 @@ class MusicProject(models.Model):
     duration = models.PositiveIntegerField(
         null=True,
         blank=True,
+        validators=[MinValueValidator(1)],
         help_text='Duration in seconds'
     )
 

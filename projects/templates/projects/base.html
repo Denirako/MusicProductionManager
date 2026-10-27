@@ -5,6 +5,298 @@
     <title>{% block title %}Music Production Manager{% endblock %}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --page-bg: #f5f6fa;
+            --card-bg: #ffffff;
+            --text-main: #202333;
+            --text-muted: #73798c;
+            --accent: #7057e8;
+            --accent-hover: #5b43ce;
+            --border-color: #e5e7ef;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--page-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .navbar.bg-dark {
+            background: #1e2030 !important;
+            box-shadow: 0 3px 16px rgba(20, 22, 40, 0.12);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        main.container {
+            min-height: calc(100vh - 120px);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(30, 32, 48, 0.04);
+        }
+
+        .btn {
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .form-control,
+        .form-select {
+            border-color: var(--border-color);
+            border-radius: 8px;
+            padding: 0.65rem 0.8rem;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 0.2rem rgba(112, 87, 232, 0.15);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        hr {
+            border-color: var(--border-color);
+            opacity: 1;
+        }
+
+        a {
+            text-underline-offset: 3px;
+        }
+
+
+        .project-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(30, 32, 48, 0.10);
+        }
+
+        .project-title {
+            color: var(--text-main);
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .project-title:hover {
+            color: var(--accent);
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: #eeeaff;
+            color: #6048c8;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-in_progress {
+            background: #e4edff;
+            color: #2857ad;
+        }
+
+        .status-mixing {
+            background: #fff0d9;
+            color: #955600;
+        }
+
+        .status-mastering {
+            background: #f0e5ff;
+            color: #7738ad;
+        }
+
+        .status-released {
+            background: #dcf7e8;
+            color: #197447;
+        }
+
+        .status-idea {
+            background: #eceef2;
+            color: #555d6c;
+        }
+
+
+        .home-page {
+            padding-bottom: 2rem;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            border-radius: 22px;
+            background: linear-gradient(120deg, #24213f 0%, #48358a 58%, #765ce8 100%);
+            color: #ffffff;
+            box-shadow: 0 16px 40px rgba(67, 48, 130, 0.16);
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #d2c7ff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero-section h1 {
+            max-width: 750px;
+            line-height: 1.12;
+        }
+
+        .hero-description {
+            max-width: 650px;
+            color: #e2ddf5;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .hero-section .btn-primary {
+            background: #ffffff;
+            border-color: #ffffff;
+            color: #49358c;
+        }
+
+        .hero-section .btn-primary:hover {
+            background: #f0ecff;
+            border-color: #f0ecff;
+            color: #352365;
+        }
+
+        .hero-decoration {
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .music-orb {
+            width: 112px;
+            height: 112px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #c6b8ff, #8d77f2);
+            color: #292044;
+            font-size: 4rem;
+            box-shadow: 0 0 45px rgba(202, 188, 255, 0.25);
+        }
+
+        .music-caption {
+            margin-top: 18px;
+            color: #e2ddf5;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .home-feature-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .home-feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(30, 32, 48, 0.09);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: #eeeaff;
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .feature-link {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .feature-link:hover {
+            color: var(--accent-hover);
+        }
+
+        .home-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        @media (max-width: 767px) {
+            .hero-decoration {
+                min-height: 170px;
+            }
+
+            .hero-section h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+
+    </style>
+
 </head>
 <body>
 

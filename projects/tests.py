@@ -17,6 +17,7 @@ class MusicProjectModelTest(TestCase):
         self.assertEqual(project.genre.name, 'Bass House')
         self.assertEqual(MusicProject.objects.count(), 1)
 
+
 class ProjectListViewTest(TestCase):
     def test_project_list_page_loads(self):
         response = self.client.get(reverse('project_list'))
@@ -42,7 +43,6 @@ class ProjectListViewTest(TestCase):
             MusicProject.objects.filter(title='Test Track').exists()
         )
 
-
     def test_project_detail_page_loads(self):
         project = MusicProject.objects.create(
             title='Detail Test Track',
@@ -56,7 +56,6 @@ class ProjectListViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Detail Test Track')
 
-
     def test_project_edit_page_loads(self):
         project = MusicProject.objects.create(
             title='Edit Test Track',
@@ -69,7 +68,6 @@ class ProjectListViewTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Edit Test Track')
-
 
     def test_project_edit_post(self):
         project = MusicProject.objects.create(
@@ -91,7 +89,6 @@ class ProjectListViewTest(TestCase):
         self.assertEqual(project.title, 'Updated Track Name')
         self.assertEqual(project.status, 'IN_PROGRESS')
 
-
     def test_project_delete(self):
         project = MusicProject.objects.create(
             title='Track To Delete',
@@ -107,7 +104,6 @@ class ProjectListViewTest(TestCase):
             MusicProject.objects.filter(pk=project.pk).exists()
         )
 
-
     def test_task_create_page_loads(self):
         project = MusicProject.objects.create(
             title='Task Test Track',
@@ -119,7 +115,6 @@ class ProjectListViewTest(TestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-
 
     def test_note_create_page_loads(self):
         project = MusicProject.objects.create(
@@ -133,7 +128,6 @@ class ProjectListViewTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-
     def test_track_version_create_page_loads(self):
         project = MusicProject.objects.create(
             title='Version Test Track',
@@ -145,7 +139,6 @@ class ProjectListViewTest(TestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-
 
     def test_project_search(self):
         MusicProject.objects.create(
@@ -166,7 +159,6 @@ class ProjectListViewTest(TestCase):
         self.assertContains(response, 'Deep Bass Track')
         self.assertNotContains(response, 'Melodic House Track')
 
-
     def test_project_status_filter(self):
         MusicProject.objects.create(
             title='Active Track',
@@ -186,7 +178,6 @@ class ProjectListViewTest(TestCase):
         self.assertContains(response, 'Active Track')
         self.assertNotContains(response, 'Idea Track')
 
-
     def test_project_list_pagination(self):
         for number in range(7):
             MusicProject.objects.create(
@@ -199,6 +190,7 @@ class ProjectListViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['projects']), 6)
         self.assertTrue(response.context['page_obj'].has_next())
+
 
 
 class MusicProjectFormTest(TestCase):
@@ -217,3 +209,35 @@ class MusicProjectFormTest(TestCase):
 
         self.assertFalse(form.is_valid())
         self.assertIn('title', form.errors)
+
+    def test_bpm_must_not_exceed_300(self):
+        form = MusicProjectForm(data={
+            'title': 'BPM Validation Test',
+            'description': '',
+            'genre': '',
+            'status': 'IDEA',
+            'bpm': 350,
+            'musical_key': '',
+            'release_date': '',
+            'duration': '',
+            'cover': '',
+        })
+
+        self.assertFalse(form.is_valid())
+        self.assertIn('bpm', form.errors)
+
+    def test_duration_must_be_at_least_1(self):
+        form = MusicProjectForm(data={
+            'title': 'Duration Validation Test',
+            'description': '',
+            'genre': '',
+            'status': 'IDEA',
+            'bpm': '',
+            'musical_key': '',
+            'release_date': '',
+            'duration': 0,
+            'cover': '',
+        })
+
+        self.assertFalse(form.is_valid())
+        self.assertIn('duration', form.errors)

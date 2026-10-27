@@ -65,22 +65,42 @@ Projects | Music Production Manager
 <div class="row mt-4">
     {% for project in projects %}
     <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a href="{% url 'project_detail' project.pk %}" class="text-decoration-none">
-                        {{ project.title }}
-                    </a>
-                </h5>
 
-                <p class="card-text">
-                    <strong>Genre:</strong> {{ project.genre|default:"Not specified" }}<br>
-                    <strong>Status:</strong> {{ project.get_status_display }}<br>
-                    <strong>BPM:</strong> {{ project.bpm|default:"—" }}<br>
-                    <strong>Key:</strong> {{ project.musical_key|default:"—" }}
-                </p>
+<div class="card project-card h-100">
+    <div class="card-body p-4">
+        <h5 class="card-title mb-3">
+            <a href="{% url 'project_detail' project.pk %}"
+               class="project-title text-decoration-none">
+                {{ project.title }}
+            </a>
+        </h5>
+
+        <div class="project-info">
+            <div class="project-info-row">
+                <span class="info-label">Genre</span>
+                <span>{{ project.genre|default:"Not specified" }}</span>
+            </div>
+
+            <div class="project-info-row">
+                <span class="info-label">Status</span>
+                <span class="status-badge status-{{ project.status|lower }}">
+                    {{ project.get_status_display }}
+                </span>
+            </div>
+
+            <div class="project-info-row">
+                <span class="info-label">BPM</span>
+                <span>{{ project.bpm|default:"—" }}</span>
+            </div>
+
+            <div class="project-info-row">
+                <span class="info-label">Key</span>
+                <span>{{ project.musical_key|default:"—" }}</span>
             </div>
         </div>
+    </div>
+</div>
+
     </div>
     {% endfor %}
 </div>

@@ -17,6 +17,14 @@ class MusicProjectForm(forms.ModelForm):
             'cover',
         ]
 
+        widgets = {
+            'bpm': forms.NumberInput(attrs={
+                'min': 1,
+                'max': 300,
+                'placeholder': 'e.g. 128',
+            }),
+        }
+
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
