@@ -1,4 +1,5 @@
 {% extends 'projects/base.html' %}
+{% load i18n %}
 
 {% block title %}
 Projects | Music Production Manager
@@ -6,21 +7,21 @@ Projects | Music Production Manager
 
 {% block content %}
 
-<form method="get" class="mb-4">
+<form method="get" class="project-filters">
     <div class="row g-2">
         <div class="col-md-5">
             <input
                     type="text"
                     name="search"
                     class="form-control"
-                    placeholder="Search projects..."
-                    value="{{ request.GET.search|default:'' }}"
+                    placeholder="{% trans "Search projects..." %}"
+            value="{{ request.GET.search|default:'' }}"
             >
         </div>
 
         <div class="col-md-3">
             <select name="genre" class="form-select">
-                <option value="">All genres</option>
+                <option value="">{% trans "All genres" %}</option>
 
                 {% for genre in genres %}
                 <option value="{{ genre.id }}">
@@ -33,7 +34,7 @@ Projects | Music Production Manager
 
         <div class="col-md-2">
             <select name="status" class="form-select">
-                <option value="">All statuses</option>
+                <option value="">{% trans "All statuses" %}</option>
 
                 {% for value, label in statuses %}
                 <option
@@ -49,107 +50,115 @@ Projects | Music Production Manager
 
         <div class="col-md-2">
             <button type="submit" class="btn btn-primary w-100">
-                Search
+                {% trans "Search" %}
             </button>
         </div>
     </div>
 </form>
 
-<h1 class="display-5 fw-bold">My Music Projects</h1>
+<div class="projects-heading mb-4">
+    <h1 class="display-5 fw-bold">{% trans "My Music Projects" %}</h1>
 
-<p class="lead text-muted">
-    Here you will manage all your music projects.
-</p>
+    <p class="lead text-muted mb-0">
+        {% trans "Your creative ideas, organized in one place." %}
+    </p>
+</div>
 
 {% if projects %}
 <div class="row mt-4">
     {% for project in projects %}
     <div class="col-md-6 col-lg-4 mb-4">
 
-<div class="card project-card h-100">
-    <div class="card-body p-4">
-        <h5 class="card-title mb-3">
-            <a href="{% url 'project_detail' project.pk %}"
-               class="project-title text-decoration-none">
-                {{ project.title }}
-            </a>
-        </h5>
+        <div class="card project-card h-100">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-3">
+                    <a href="{% url 'project_detail' project.pk %}"
+                       class="project-title text-decoration-none">
+                        {{ project.title }}
+                    </a>
+                </h5>
 
-        <div class="project-info">
-            <div class="project-info-row">
-                <span class="info-label">Genre</span>
-                <span>{{ project.genre|default:"Not specified" }}</span>
-            </div>
+                <div class="project-info">
+                    <div class="project-info-row">
+                        <span class="info-label">{% trans "Genre" %}</span>
+                        <span>
+    {% if project.genre %}
+        {{ project.genre }}
+    {% else %}
+        {% trans "Not specified" %}
+    {% endif %}
+</span>
+                    </div>
 
-            <div class="project-info-row">
-                <span class="info-label">Status</span>
-                <span class="status-badge status-{{ project.status|lower }}">
+                    <div class="project-info-row">
+                        <span class="info-label">{% trans "Status" %}</span>
+                        <span class="status-badge status-{{ project.status|lower }}">
                     {{ project.get_status_display }}
                 </span>
-            </div>
+                    </div>
 
-            <div class="project-info-row">
-                <span class="info-label">BPM</span>
-                <span>{{ project.bpm|default:"—" }}</span>
-            </div>
+                    <div class="project-info-row">
+                        <span class="info-label">BPM</span>
+                        <span>{{ project.bpm|default:"—" }}</span>
+                    </div>
 
-            <div class="project-info-row">
-                <span class="info-label">Key</span>
-                <span>{{ project.musical_key|default:"—" }}</span>
+                    <div class="project-info-row">
+                        <span class="info-label">{% trans "Key" %}</span>
+                        <span>{{ project.musical_key|default:"—" }}</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
     </div>
     {% endfor %}
 </div>
 
 {% if page_obj.has_other_pages %}
-    <nav aria-label="Project pages" class="mt-4">
-        <ul class="pagination justify-content-center">
+<nav aria-label="Project pages" class="mt-4">
+    <ul class="pagination justify-content-center">
 
-            {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="?{% if request.GET.search %}search={{ request.GET.search|urlencode }}&{% endif %}{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.status %}status={{ request.GET.status }}&{% endif %}page={{ page_obj.previous_page_number }}">
-                        Previous
-                    </a>
-                </li>
-            {% endif %}
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link"
+               href="?{% if request.GET.search %}search={{ request.GET.search|urlencode }}&{% endif %}{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.status %}status={{ request.GET.status }}&{% endif %}page={{ page_obj.previous_page_number }}">
+                {% trans "Previous" %}
+            </a>
+        </li>
+        {% endif %}
 
-            <li class="page-item active">
+        <li class="page-item active">
                 <span class="page-link">
                     {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
                 </span>
-            </li>
+        </li>
 
-            {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="?{% if request.GET.search %}search={{ request.GET.search|urlencode }}&{% endif %}{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.status %}status={{ request.GET.status }}&{% endif %}page={{ page_obj.next_page_number }}">
-                        Next
-                    </a>
-                </li>
-            {% endif %}
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link"
+               href="?{% if request.GET.search %}search={{ request.GET.search|urlencode }}&{% endif %}{% if request.GET.genre %}genre={{ request.GET.genre }}&{% endif %}{% if request.GET.status %}status={{ request.GET.status }}&{% endif %}page={{ page_obj.next_page_number }}">
+                {% trans "Next" %}
+            </a>
+        </li>
+        {% endif %}
 
-        </ul>
-    </nav>
+    </ul>
+</nav>
 {% endif %}
 
 {% else %}
 <div class="card mt-4">
     <div class="card-body text-center py-5">
-        <h5 class="card-title">No Projects Yet</h5>
+        <h5 class="card-title">{% trans "No Projects Yet" %}</h5>
         <p class="card-text text-muted">
-            Your music projects will appear here once you create them.
+            {% trans "Your music projects will appear here once you create them." %}
         </p>
     </div>
 </div>
 {% endif %}
 
 <a href="{% url 'project_create' %}" class="btn btn-primary mb-4">
-    Create New Project
+    {% trans "Create New Project" %}
 </a>
 
 {% endblock %}

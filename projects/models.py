@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
+from django.utils.translation import gettext_lazy as _
+
 class Genre(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
@@ -10,11 +12,11 @@ class Genre(models.Model):
 class MusicProject(models.Model):
 
     STATUS_CHOICES = [
-        ('IDEA', 'Idea'),
-        ('IN_PROGRESS', 'In Progress'),
-        ('MIXING', 'Mixing'),
-        ('MASTERING', 'Mastering'),
-        ('RELEASED', 'Released'),
+        ('IDEA', _('Idea')),
+        ('IN_PROGRESS', _('In Progress')),
+        ('MIXING', _('Mixing')),
+        ('MASTERING', _('Mastering')),
+        ('RELEASED', _('Released')),
     ]
 
     MUSICAL_KEY_CHOICES = [
@@ -110,9 +112,9 @@ class Task(models.Model):
     description = models.TextField(blank=True)
 
     STATUS_CHOICES = [
-        ('TODO', 'To Do'),
-        ('IN_PROGRESS', 'In Progress'),
-        ('DONE', 'Done'),
+        ('TODO', _('To Do')),
+        ('IN_PROGRESS', _('In Progress')),
+        ('DONE', _('Done')),
     ]
 
     status = models.CharField(

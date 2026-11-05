@@ -1,26 +1,36 @@
-{% extends 'projects/base.html' %}
 
-{% block title %}Add Track Version | Music Production Manager{% endblock %}
+{% extends 'projects/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Add Track Version" %} | Music Production Manager{% endblock %}
 
 {% block content %}
-    <h1 class="display-5 fw-bold mb-4">Add Track Version</h1>
+<h1 class="display-5 fw-bold mb-4">{% trans "Add Track Version" %}</h1>
 
-    <p class="text-muted">
-        Project: <strong>{{ project.title }}</strong>
-    </p>
+<div class="card form-card">
+    <div class="card-body p-4">
 
-    <form method="post">
-        {% csrf_token %}
+        <p class="text-muted mb-4">
+            {% trans "Project:" %} <strong>{{ project.title }}</strong>
+        </p>
 
-        {{ form.as_p }}
+        <form method="post">
+            {% csrf_token %}
 
-        <button type="submit" class="btn btn-primary">
-            Save Version
-        </button>
+            {{ form.as_p }}
 
-        <a href="{% url 'project_detail' project.pk %}"
-           class="btn btn-secondary">
-            Cancel
-        </a>
-    </form>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">
+                    {% trans "Save Version" %}
+                </button>
+
+                <a href="{% url 'project_detail' project.pk %}"
+                   class="btn btn-secondary">
+                    {% trans "Cancel" %}
+                </a>
+            </div>
+        </form>
+
+    </div>
+</div>
 {% endblock %}

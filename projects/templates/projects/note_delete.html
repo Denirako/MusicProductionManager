@@ -1,25 +1,39 @@
-{% extends 'projects/base.html' %}
 
-{% block title %}Delete Note | Music Production Manager{% endblock %}
+{% extends 'projects/base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Delete Note" %} | Music Production Manager{% endblock %}
 
 {% block content %}
-    <h1 class="display-5 fw-bold mb-4">Delete Note</h1>
+    <h1 class="display-5 fw-bold mb-4">{% trans "Delete Note" %}</h1>
 
-    <p>
-        Are you sure you want to delete the note
-        <strong>{{ note.title }}</strong>?
-    </p>
+    <div class="card">
+        <div class="card-body">
 
-    <form method="post">
-        {% csrf_token %}
+            <h5 class="card-title">{% trans "Are you sure?" %}</h5>
 
-        <button type="submit" class="btn btn-danger">
-            Delete Note
-        </button>
+            <p>
+                {% trans "Are you sure you want to delete the note" %}
+                <strong>{{ note.title }}</strong>?
+            </p>
 
-        <a href="{% url 'project_detail' project.pk %}"
-           class="btn btn-secondary">
-            Cancel
-        </a>
-    </form>
+            <p class="text-muted">
+                {% trans "This action cannot be undone." %}
+            </p>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <button type="submit" class="btn btn-danger">
+                    {% trans "Delete Note" %}
+                </button>
+
+                <a href="{% url 'project_detail' project.pk %}"
+                   class="btn btn-secondary">
+                    {% trans "Cancel" %}
+                </a>
+            </form>
+
+        </div>
+    </div>
 {% endblock %}

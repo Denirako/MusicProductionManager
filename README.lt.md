@@ -125,7 +125,7 @@ python manage.py test analytics
 
 ## Galimi patobulinimai
 
-- Pridėti daugiakalbės sąsajos palaikymą.
 - Išplėsti analitikos ir ataskaitų galimybes.
 - Tobulinti muzikinių projektų valdymo procesus.
 - Pridėti daugiau muzikos kūrybos statistikos.
+- Įdiegti duomenų eksportavimo funkciją.

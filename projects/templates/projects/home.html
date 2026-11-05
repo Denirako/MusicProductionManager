@@ -1,5 +1,5 @@
-
 {% extends 'projects/base.html' %}
+{% load i18n %}
 
 {% block title %}Home | Music Production Manager{% endblock %}
 
@@ -9,36 +9,35 @@
     <section class="hero-section p-4 p-md-5 mb-5">
         <div class="row align-items-center g-4">
             <div class="col-lg-8">
-                <span class="hero-label">YOUR CREATIVE WORKSPACE</span>
+                <span class="hero-label">{% trans "YOUR CREATIVE WORKSPACE" %}</span>
 
                 <h1 class="display-4 fw-bold mt-3 mb-3">
-                    Turn your ideas into music.
+                    {% trans "Turn your ideas into music." %}
                 </h1>
 
                 <p class="hero-description mb-4">
-                    Organize your music projects, track your progress,
-                    manage tasks and keep every version in one place.
+                    {% trans "Organize your music projects, track your progress, manage tasks and keep every version in one place." %}
                 </p>
 
                 <a href="{% url 'project_list' %}"
                    class="btn btn-primary btn-lg">
-                    View My Projects →
+                    {% trans "View My Projects →" %}
                 </a>
             </div>
 
             <div class="col-lg-4">
                 <div class="hero-decoration">
                     <div class="music-orb">♫</div>
-                    <div class="music-caption">Create. Refine. Release.</div>
+                    <div class="music-caption">{% trans "Create. Refine. Release." %}</div>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="mb-4">
-        <h2 class="h3 mb-2">Your workspace</h2>
+        <h2 class="h3 mb-2">{% trans "Your workspace" %}</h2>
         <p class="text-muted">
-            Everything you need to organize your music production.
+            {% trans "Everything you need to organize your music production." %}
         </p>
     </section>
 
@@ -48,14 +47,13 @@
             <div class="card home-feature-card h-100">
                 <div class="card-body p-4">
                     <div class="feature-icon">♫</div>
-                    <h3 class="h5 mt-3">Music Projects</h3>
+                    <h3 class="h5 mt-3">{% trans "Music Projects" %}</h3>
                     <p class="text-muted">
-                        Organize tracks, genres, BPM, musical keys
-                        and release information.
+                        {% trans "Organize tracks, genres, BPM, musical keys and release information." %}
                     </p>
                     <a href="{% url 'project_list' %}"
                        class="feature-link">
-                        Explore projects →
+                        {% trans "Explore projects →" %}
                     </a>
                 </div>
             </div>
@@ -65,14 +63,13 @@
             <div class="card home-feature-card h-100">
                 <div class="card-body p-4">
                     <div class="feature-icon">✓</div>
-                    <h3 class="h5 mt-3">Tasks & Notes</h3>
+                    <h3 class="h5 mt-3">{% trans "Tasks & Notes" %}</h3>
                     <p class="text-muted">
-                        Keep your production tasks organized
-                        and save ideas for your next session.
+                        {% trans "Keep your production tasks organized and save ideas for your next session." %}
                     </p>
                     <a href="{% url 'project_list' %}"
                        class="feature-link">
-                        Manage your work →
+                        {% trans "Manage your work →" %}
                     </a>
                 </div>
             </div>
@@ -82,14 +79,13 @@
             <div class="card home-feature-card h-100">
                 <div class="card-body p-4">
                     <div class="feature-icon">↗</div>
-                    <h3 class="h5 mt-3">Track Versions</h3>
+                    <h3 class="h5 mt-3">{% trans "Track Versions" %}</h3>
                     <p class="text-muted">
-                        Keep different versions of your tracks
-                        organized as your sound evolves.
+                        {% trans "Keep different versions of your tracks organized as your sound evolves." %}
                     </p>
                     <a href="{% url 'project_list' %}"
                        class="feature-link">
-                        View your tracks →
+                        {% trans "View your tracks →" %}
                     </a>
                 </div>
             </div>
@@ -99,7 +95,7 @@
 
     <div class="home-footer mt-5">
         <p class="mb-0">
-            Every great track starts with an idea.
+            {% trans "Every great track starts with an idea." %}
         </p>
     </div>
 

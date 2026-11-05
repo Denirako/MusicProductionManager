@@ -1,0 +1,543 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-03 21:33+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
+"19) ? 0 : n % 10 >= 2 && (n % 100 < 11 || n % 100 > 19) ? 1 : 2);\n"
+
+#: .\analytics\templates\analytics\dashboard.html:4
+#: .\analytics\templates\analytics\dashboard.html:7
+#: .\projects\templates\projects\base.html:340
+msgid "Dashboard"
+msgstr "Apžvalga"
+
+#: .\analytics\templates\analytics\dashboard.html:14
+msgid "Total Projects"
+msgstr "Iš viso projektų"
+
+#: .\analytics\templates\analytics\dashboard.html:27
+msgid "Total Tasks"
+msgstr "Iš viso užduočių"
+
+#: .\analytics\templates\analytics\dashboard.html:40
+msgid "Unfinished Tasks"
+msgstr "Neužbaigtos užduotys"
+
+#: .\analytics\templates\analytics\dashboard.html:51
+msgid "Projects by Status"
+msgstr "Projektai pagal būseną"
+
+#: .\analytics\templates\analytics\dashboard.html:57 .\analytics\views.py:56
+#: .\projects\models.py:15
+msgid "Idea"
+msgstr "Idėja"
+
+#: .\analytics\templates\analytics\dashboard.html:68 .\analytics\views.py:57
+#: .\projects\models.py:16 .\projects\models.py:116
+msgid "In Progress"
+msgstr "Vykdoma"
+
+#: .\analytics\templates\analytics\dashboard.html:79 .\analytics\views.py:58
+#: .\projects\models.py:17
+msgid "Mixing"
+msgstr "Suvedimas"
+
+#: .\analytics\templates\analytics\dashboard.html:90 .\analytics\views.py:59
+#: .\projects\models.py:18
+msgid "Mastering"
+msgstr "Masteringas"
+
+#: .\analytics\templates\analytics\dashboard.html:101 .\analytics\views.py:60
+#: .\projects\models.py:19
+msgid "Released"
+msgstr "Išleista"
+
+#: .\analytics\templates\analytics\dashboard.html:115 .\analytics\views.py:83
+msgid "Project Status Distribution"
+msgstr "Projektų pasiskirstymas pagal būseną"
+
+#: .\analytics\templates\analytics\dashboard.html:120
+msgid "Pie chart showing project distribution by status"
+msgstr "Skritulinė diagrama, rodanti projektų pasiskirstymą pagal būseną"
+
+#: .\analytics\templates\analytics\dashboard.html:129
+msgid "Projects by Genre"
+msgstr "Projektai pagal žanrą"
+
+#: .\analytics\templates\analytics\dashboard.html:137 .\analytics\views.py:31
+msgid "No Genre"
+msgstr "Nenurodytas žanras"
+
+#: .\analytics\templates\analytics\dashboard.html:149
+msgid "No projects to display by genre yet."
+msgstr "Kol kas nėra projektų, kuriuos būtų galima rodyti pagal žanrą."
+
+#: .\analytics\templates\analytics\dashboard.html:158
+msgid "Genre Analysis (Pandas)"
+msgstr "Žanrų analizė (Pandas)"
+
+#: .\analytics\templates\analytics\dashboard.html:166
+msgid "No genre data available."
+msgstr "Žanrų duomenų nėra."
+
+#: .\analytics\templates\analytics\dashboard.html:175
+msgid "View Projects"
+msgstr "Peržiūrėti projektus"
+
+#: .\projects\forms.py:23 .\projects\forms.py:66 .\projects\forms.py:77
+msgid "Title"
+msgstr "Pavadinimas"
+
+#: .\projects\forms.py:24 .\projects\forms.py:67 .\projects\forms.py:88
+#: .\projects\templates\projects\project_detail.html:54
+msgid "Description"
+msgstr "Aprašymas"
+
+#: .\projects\forms.py:25 .\projects\templates\projects\project_list.html:83
+msgid "Genre"
+msgstr "Žanras"
+
+#: .\projects\forms.py:26 .\projects\forms.py:68
+#: .\projects\templates\projects\project_list.html:94
+msgid "Status"
+msgstr "Būsena"
+
+#: .\projects\forms.py:27
+msgid "BPM"
+msgstr "Tempas (BPM):"
+
+#: .\projects\forms.py:28
+msgid "Musical key"
+msgstr "Tonacija"
+
+#: .\projects\forms.py:29
+msgid "Release date"
+msgstr "Išleidimo data"
+
+#: .\projects\forms.py:30
+msgid "Duration"
+msgstr "Trukmė"
+
+#: .\projects\forms.py:31
+msgid "Cover"
+msgstr "Viršelis"
+
+#: .\projects\forms.py:35
+msgid "Duration in seconds"
+msgstr "Trukmė sekundėmis"
+
+#: .\projects\forms.py:49 .\projects\forms.py:52
+msgid "Select an option"
+msgstr "Pasirinkite parinktį"
+
+#: .\projects\forms.py:69
+msgid "Due date"
+msgstr "Išleidimo data"
+
+#: .\projects\forms.py:78
+msgid "Content"
+msgstr "Turinys"
+
+#: .\projects\forms.py:87
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: .\projects\forms.py:94
+msgid "Enter version name"
+msgstr "Įveskite versijos pavadinimą"
+
+#: .\projects\forms.py:99
+msgid "Describe this version"
+msgstr "Aprašykite šią versiją"
+
+#: .\projects\models.py:115
+msgid "To Do"
+msgstr "Nepradėta"
+
+#: .\projects\models.py:117
+msgid "Done"
+msgstr "Atlikta"
+
+#: .\projects\templates\projects\base.html:329
+msgid "Music Production Manager"
+msgstr "Muzikos kūrimo projektų valdymas"
+
+#: .\projects\templates\projects\base.html:334
+msgid "Home"
+msgstr "Pradžia"
+
+#: .\projects\templates\projects\base.html:337
+msgid "Projects"
+msgstr "Projektai"
+
+#: .\projects\templates\projects\home.html:12
+msgid "YOUR CREATIVE WORKSPACE"
+msgstr "JŪSŲ KŪRYBINĖ ERDVĖ"
+
+#: .\projects\templates\projects\home.html:15
+msgid "Turn your ideas into music."
+msgstr "Paverskite savo idėjas muzika."
+
+#: .\projects\templates\projects\home.html:19
+msgid ""
+"Organize your music projects, track your progress, manage tasks and keep "
+"every version in one place."
+msgstr ""
+"Tvarkykite muzikos projektus, stebėkite pažangą, valdykite užduotis ir "
+"saugokite visas versijas vienoje vietoje."
+
+#: .\projects\templates\projects\home.html:24
+msgid "View My Projects →"
+msgstr "Peržiūrėti mano projektus →"
+
+#: .\projects\templates\projects\home.html:31
+msgid "Create. Refine. Release."
+msgstr "Kurkite. Tobulinkite. Išleiskite."
+
+#: .\projects\templates\projects\home.html:38
+msgid "Your workspace"
+msgstr "Jūsų darbo erdvė"
+
+#: .\projects\templates\projects\home.html:40
+msgid "Everything you need to organize your music production."
+msgstr "Viskas, ko reikia muzikos kūrybai organizuoti."
+
+#: .\projects\templates\projects\home.html:50
+msgid "Music Projects"
+msgstr "Muzikos projektai"
+
+#: .\projects\templates\projects\home.html:52
+msgid "Organize tracks, genres, BPM, musical keys and release information."
+msgstr ""
+"Tvarkykite takelius, žanrus, BPM, tonacijas ir informaciją apie išleidimą."
+
+#: .\projects\templates\projects\home.html:56
+msgid "Explore projects →"
+msgstr "Peržiūrėti projektus →"
+
+#: .\projects\templates\projects\home.html:66
+msgid "Tasks & Notes"
+msgstr "Užduotys ir pastabos"
+
+#: .\projects\templates\projects\home.html:68
+msgid ""
+"Keep your production tasks organized and save ideas for your next session."
+msgstr "Tvarkykite kūrybos užduotis ir išsaugokite idėjas kitam seansui."
+
+#: .\projects\templates\projects\home.html:72
+msgid "Manage your work →"
+msgstr "Tvarkyti savo darbus →"
+
+#: .\projects\templates\projects\home.html:82
+#: .\projects\templates\projects\project_detail.html:163
+msgid "Track Versions"
+msgstr "Takelio versijos"
+
+#: .\projects\templates\projects\home.html:84
+msgid "Keep different versions of your tracks organized as your sound evolves."
+msgstr "Tvarkykite skirtingas takelių versijas tobulindami savo skambesį."
+
+#: .\projects\templates\projects\home.html:88
+msgid "View your tracks →"
+msgstr "Peržiūrėti savo takelius →"
+
+#: .\projects\templates\projects\home.html:98
+msgid "Every great track starts with an idea."
+msgstr "Kiekvienas puikus kūrinys prasideda nuo idėjos."
+
+#: .\projects\templates\projects\note_delete.html:5
+#: .\projects\templates\projects\note_delete.html:8
+#: .\projects\templates\projects\note_delete.html:28
+msgid "Delete Note"
+msgstr "Ištrinti pastabą"
+
+#: .\projects\templates\projects\note_delete.html:13
+#: .\projects\templates\projects\project_delete.html:12
+#: .\projects\templates\projects\task_delete.html:13
+msgid "Are you sure?"
+msgstr "Ar tikrai norite tęsti?"
+
+#: .\projects\templates\projects\note_delete.html:16
+msgid "Are you sure you want to delete the note"
+msgstr "Ar tikrai norite ištrinti pastabą"
+
+#: .\projects\templates\projects\note_delete.html:21
+#: .\projects\templates\projects\project_delete.html:20
+#: .\projects\templates\projects\task_delete.html:21
+msgid "This action cannot be undone."
+msgstr "Šio veiksmo negalima atšaukti."
+
+#: .\projects\templates\projects\note_delete.html:33
+#: .\projects\templates\projects\note_form.html:74
+#: .\projects\templates\projects\project_delete.html:32
+#: .\projects\templates\projects\project_form.html:29
+#: .\projects\templates\projects\task_delete.html:33
+#: .\projects\templates\projects\task_form.html:63
+#: .\projects\templates\projects\track_version_confirm_delete.html:30
+#: .\projects\templates\projects\track_version_form.html:29
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: .\projects\templates\projects\note_form.html:7
+#: .\projects\templates\projects\note_form.html:19
+msgid "Edit Note"
+msgstr "Redaguoti pastabą"
+
+#: .\projects\templates\projects\note_form.html:9
+#: .\projects\templates\projects\note_form.html:21
+#: .\projects\templates\projects\project_detail.html:120
+msgid "Add Note"
+msgstr "Pridėti pastabą"
+
+#: .\projects\templates\projects\note_form.html:27
+msgid "Edit note for"
+msgstr "Redaguoti pastabą projektui"
+
+#: .\projects\templates\projects\note_form.html:29
+msgid "Add a note to"
+msgstr "Pridėti pastabą prie"
+
+#: .\projects\templates\projects\note_form.html:69
+msgid "Save Note"
+msgstr "Išsaugoti pastabą"
+
+#: .\projects\templates\projects\project_delete.html:5
+#: .\projects\templates\projects\project_detail.html:102
+#: .\projects\templates\projects\project_detail.html:144
+#: .\projects\templates\projects\project_detail.html:192
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: .\projects\templates\projects\project_delete.html:8
+#: .\projects\templates\projects\project_detail.html:209
+msgid "Delete Project"
+msgstr "Ištrinti projektą"
+
+#: .\projects\templates\projects\project_delete.html:15
+#: .\projects\templates\projects\task_delete.html:16
+msgid "Are you sure you want to delete"
+msgstr "Ar tikrai norite ištrinti"
+
+#: .\projects\templates\projects\project_delete.html:27
+#: .\projects\templates\projects\task_delete.html:28
+#: .\projects\templates\projects\track_version_confirm_delete.html:25
+msgid "Yes, Delete"
+msgstr "Taip, ištrinti"
+
+#: .\projects\templates\projects\project_detail.html:20
+msgid "Project Details"
+msgstr "Projekto informacija"
+
+#: .\projects\templates\projects\project_detail.html:23
+msgid "Genre:"
+msgstr "Žanras:"
+
+#: .\projects\templates\projects\project_detail.html:24
+#: .\projects\templates\projects\project_list.html:88
+msgid "Not specified"
+msgstr "Nenurodyta"
+
+#: .\projects\templates\projects\project_detail.html:28
+msgid "Status:"
+msgstr "Būsena:"
+
+#: .\projects\templates\projects\project_detail.html:33
+msgid "BPM:"
+msgstr "Tempas (BPM):"
+
+#: .\projects\templates\projects\project_detail.html:38
+msgid "Musical Key:"
+msgstr "Tonacija:"
+
+#: .\projects\templates\projects\project_detail.html:43
+msgid "Release Date:"
+msgstr "Išleidimo data:"
+
+#: .\projects\templates\projects\project_detail.html:48
+msgid "Duration:"
+msgstr "Trukmė:"
+
+#: .\projects\templates\projects\project_detail.html:49
+msgid "seconds"
+msgstr "sekundžių"
+
+#: .\projects\templates\projects\project_detail.html:57
+msgid "No description yet."
+msgstr "Aprašymo dar nėra."
+
+#: .\projects\templates\projects\project_detail.html:62
+msgid "Tasks"
+msgstr "Užduotys"
+
+#: .\projects\templates\projects\project_detail.html:65
+#: .\projects\templates\projects\task_form.html:4
+#: .\projects\templates\projects\task_form.html:13
+msgid "Add Task"
+msgstr "Pridėti užduotį"
+
+#: .\projects\templates\projects\project_detail.html:85
+msgid "Due:"
+msgstr "Terminas:"
+
+#: .\projects\templates\projects\project_detail.html:97
+#: .\projects\templates\projects\project_detail.html:139
+#: .\projects\templates\projects\project_detail.html:187
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: .\projects\templates\projects\project_detail.html:111
+msgid "No tasks yet."
+msgstr "Užduočių dar nėra."
+
+#: .\projects\templates\projects\project_detail.html:117
+msgid "Notes"
+msgstr "Pastabos"
+
+#: .\projects\templates\projects\project_detail.html:133
+msgid "Updated:"
+msgstr "Atnaujinta:"
+
+#: .\projects\templates\projects\project_detail.html:152
+msgid "No notes yet."
+msgstr "Pastabų dar nėra."
+
+#: .\projects\templates\projects\project_detail.html:167
+msgid "Add Version"
+msgstr "Pridėti versiją"
+
+#: .\projects\templates\projects\project_detail.html:180
+msgid "Created:"
+msgstr "Sukurta:"
+
+#: .\projects\templates\projects\project_detail.html:199
+msgid "No track versions yet."
+msgstr "Takelio versijų dar nėra."
+
+#: .\projects\templates\projects\project_detail.html:205
+#: .\projects\templates\projects\project_form.html:5
+#: .\projects\templates\projects\project_form.html:10
+msgid "Edit Project"
+msgstr "Redaguoti projektą"
+
+#: .\projects\templates\projects\project_detail.html:213
+msgid "Back to Projects"
+msgstr "Grįžti prie projektų"
+
+#: .\projects\templates\projects\project_form.html:5
+msgid "Create Project"
+msgstr "Sukurti projektą"
+
+#: .\projects\templates\projects\project_form.html:12
+#: .\projects\templates\projects\project_list.html:161
+msgid "Create New Project"
+msgstr "Sukurti naują projektą"
+
+#: .\projects\templates\projects\project_form.html:25
+msgid "Save Project"
+msgstr "Išsaugoti projektą"
+
+#: .\projects\templates\projects\project_list.html:17
+msgid "Search projects..."
+msgstr "Projektų paieška..."
+
+#: .\projects\templates\projects\project_list.html:24
+msgid "All genres"
+msgstr "Visi žanrai"
+
+#: .\projects\templates\projects\project_list.html:37
+msgid "All statuses"
+msgstr "Visos būsenos"
+
+#: .\projects\templates\projects\project_list.html:53
+msgid "Search"
+msgstr "Ieškoti"
+
+#: .\projects\templates\projects\project_list.html:60
+msgid "My Music Projects"
+msgstr "Mano muzikos projektai"
+
+#: .\projects\templates\projects\project_list.html:63
+msgid "Your creative ideas, organized in one place."
+msgstr "Jūsų kūrybinės idėjos vienoje vietoje."
+
+#: .\projects\templates\projects\project_list.html:106
+msgid "Key"
+msgstr "Tonacija"
+
+#: .\projects\templates\projects\project_list.html:125
+msgid "Previous"
+msgstr "Ankstesnis"
+
+#: .\projects\templates\projects\project_list.html:140
+msgid "Next"
+msgstr "Kitas"
+
+#: .\projects\templates\projects\project_list.html:152
+msgid "No Projects Yet"
+msgstr "Projektų dar nėra"
+
+#: .\projects\templates\projects\project_list.html:154
+msgid "Your music projects will appear here once you create them."
+msgstr "Čia bus rodomi tavo muzikos projektai, kai juos sukursi."
+
+#: .\projects\templates\projects\task_delete.html:5
+#: .\projects\templates\projects\task_delete.html:8
+msgid "Delete Task"
+msgstr "Ištrinti užduotį"
+
+#: .\projects\templates\projects\task_form.html:4
+#: .\projects\templates\projects\task_form.html:11
+msgid "Edit Task"
+msgstr "Redaguoti užduotį"
+
+#: .\projects\templates\projects\task_form.html:19
+msgid "Edit task for"
+msgstr "Redaguoti užduotį projektui"
+
+#: .\projects\templates\projects\task_form.html:21
+msgid "Add a task to"
+msgstr "Pridėti užduotį prie"
+
+#: .\projects\templates\projects\task_form.html:58
+msgid "Save Task"
+msgstr "Išsaugoti užduotį"
+
+#: .\projects\templates\projects\track_version_confirm_delete.html:5
+#: .\projects\templates\projects\track_version_confirm_delete.html:8
+msgid "Delete Track Version"
+msgstr "Ištrinti takelio versiją"
+
+#: .\projects\templates\projects\track_version_confirm_delete.html:14
+msgid "Are you sure you want to delete this track version?"
+msgstr "Ar tikrai norite ištrinti šią takelio versiją?"
+
+#: .\projects\templates\projects\track_version_confirm_delete.html:18
+msgid "Version:"
+msgstr "Versija:"
+
+#: .\projects\templates\projects\track_version_form.html:5
+#: .\projects\templates\projects\track_version_form.html:8
+msgid "Add Track Version"
+msgstr "Pridėti takelio versiją"
+
+#: .\projects\templates\projects\track_version_form.html:14
+msgid "Project:"
+msgstr "Projektas:"
+
+#: .\projects\templates\projects\track_version_form.html:24
+msgid "Save Version"
+msgstr "Išsaugoti versiją"

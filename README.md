@@ -125,7 +125,7 @@ This project was developed as coursework to demonstrate the practical applicatio
 
 ## Future Improvements
 
-- Add multilingual support.
-- Expand analytics and reporting.
+- Expand analytics and reporting capabilities.
 - Improve project management workflows.
 - Introduce additional music production statistics.
+- Add data export functionality.

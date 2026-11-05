@@ -2,6 +2,8 @@ from django.shortcuts import render
 from projects.models import MusicProject, Task
 from django.db.models import Count
 
+from django.utils.translation import gettext as _
+
 import matplotlib
 matplotlib.use('Agg')
 
@@ -26,7 +28,7 @@ def dashboard(request):
     if not df.empty:
         genre_analysis = (
             df['genre__name']
-            .fillna('No Genre')
+            .fillna(_('No Genre'))
             .value_counts()
         )
     else:
@@ -51,11 +53,11 @@ def dashboard(request):
     ).count()
 
     status_labels = [
-        'Idea',
-        'In Progress',
-        'Mixing',
-        'Mastering',
-        'Released',
+        _('Idea'),
+        _('In Progress'),
+        _('Mixing'),
+        _('Mastering'),
+        _('Released'),
     ]
 
     status_values = [
@@ -66,19 +68,40 @@ def dashboard(request):
         released_projects,
     ]
 
+    chart_data = [
+        (label, value)
+        for label, value in zip(status_labels, status_values)
+        if value > 0
+    ]
+
+    chart_labels = [item[0] for item in chart_data]
+    chart_values = [item[1] for item in chart_data]
+
     chart = None
 
-    if sum(status_values) > 0:
+    if sum(chart_values) > 0:
         fig, ax = plt.subplots(figsize=(7, 5))
 
+        chart_labels = [
+            label for label, value in zip(status_labels, status_values)
+            if value > 0
+        ]
+
+        chart_values = [
+            value for value in status_values
+            if value > 0
+        ]
+
         ax.pie(
-            status_values,
-            labels=status_labels,
+            chart_values,
+            labels=chart_labels,
             autopct='%1.1f%%',
             startangle=90,
         )
 
-        ax.set_title('Project Status Distribution')
+        ax.set_title(_('Project Status Distribution'))
+        ax.axis('equal')
+
         ax.axis('equal')
 
         buffer = io.BytesIO()

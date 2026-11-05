@@ -1,16 +1,17 @@
 {% extends 'projects/base.html' %}
+{% load i18n %}
 
-{% block title %}Dashboard | Music Production Manager{% endblock %}
+{% block title %}{% trans "Dashboard" %} | Music Production Manager{% endblock %}
 
 {% block content %}
-<h1 class="display-5 fw-bold mb-4">Dashboard</h1>
+<h1 class="display-5 fw-bold mb-4">{% trans "Dashboard" %}</h1>
 
 <div class="row g-4">
     <div class="col-md-4">
         <div class="card shadow-sm h-100">
             <div class="card-body">
                 <h5 class="card-title text-muted">
-                    Total Projects
+                    {% trans "Total Projects" %}
                 </h5>
                 <p class="display-4 fw-bold mb-0">
                     {{ total_projects }}
@@ -23,7 +24,7 @@
         <div class="card shadow-sm h-100">
             <div class="card-body">
                 <h5 class="card-title text-muted">
-                    Total Tasks
+                    {% trans "Total Tasks" %}
                 </h5>
                 <p class="display-4 fw-bold mb-0">
                     {{ total_tasks }}
@@ -36,7 +37,7 @@
         <div class="card shadow-sm h-100">
             <div class="card-body">
                 <h5 class="card-title text-muted">
-                    Unfinished Tasks
+                    {% trans "Unfinished Tasks" %}
                 </h5>
                 <p class="display-4 fw-bold mb-0">
                     {{ unfinished_tasks }}
@@ -47,13 +48,13 @@
 </div>
 
 
-<h2 class="h4 mt-5 mb-3">Projects by Status</h2>
+<h2 class="h4 mt-5 mb-3">{% trans "Projects by Status" %}</h2>
 
 <div class="row g-3">
     <div class="col-md-4 col-lg">
         <div class="card h-100">
             <div class="card-body">
-                <h6 class="text-muted">Idea</h6>
+                <h6 class="text-muted">{% trans "Idea" %}</h6>
                 <p class="display-6 fw-bold mb-0">
                     {{ idea_projects }}
                 </p>
@@ -64,7 +65,7 @@
     <div class="col-md-4 col-lg">
         <div class="card h-100">
             <div class="card-body">
-                <h6 class="text-muted">In Progress</h6>
+                <h6 class="text-muted"> {% trans "In Progress" %}</h6>
                 <p class="display-6 fw-bold mb-0">
                     {{ in_progress_projects }}
                 </p>
@@ -75,7 +76,7 @@
     <div class="col-md-4 col-lg">
         <div class="card h-100">
             <div class="card-body">
-                <h6 class="text-muted">Mixing</h6>
+                <h6 class="text-muted">{% trans "Mixing" %}</h6>
                 <p class="display-6 fw-bold mb-0">
                     {{ mixing_projects }}
                 </p>
@@ -86,7 +87,7 @@
     <div class="col-md-4 col-lg">
         <div class="card h-100">
             <div class="card-body">
-                <h6 class="text-muted">Mastering</h6>
+                <h6 class="text-muted">{% trans "Mastering" %}</h6>
                 <p class="display-6 fw-bold mb-0">
                     {{ mastering_projects }}
                 </p>
@@ -97,7 +98,7 @@
     <div class="col-md-4 col-lg">
         <div class="card h-100">
             <div class="card-body">
-                <h6 class="text-muted">Released</h6>
+                <h6 class="text-muted">{% trans "Released" %}</h6>
                 <p class="display-6 fw-bold mb-0">
                     {{ released_projects }}
                 </p>
@@ -111,12 +112,12 @@
 <div class="card shadow-sm mt-4">
     <div class="card-body text-center">
         <h2 class="h4 mb-3">
-            Project Status Distribution
+            {% trans "Project Status Distribution" %}
         </h2>
 
         <img
                 src="data:image/png;base64,{{ chart }}"
-                alt="Pie chart showing project distribution by status"
+                alt="{% trans 'Pie chart showing project distribution by status' %}"
                 class="img-fluid"
                 style="max-width: 650px;"
         >
@@ -125,7 +126,7 @@
 {% endif %}
 
 
-<h2 class="h4 mt-5 mb-3">Projects by Genre</h2>
+<h2 class="h4 mt-5 mb-3">{% trans "Projects by Genre" %}</h2>
 
 <div class="row g-3">
     {% for genre in genre_stats %}
@@ -133,7 +134,7 @@
         <div class="card h-100">
             <div class="card-body">
                 <h6 class="text-muted">
-                    {{ genre.genre__name|default:"No Genre" }}
+                    {{ genre.genre__name|default:_("No Genre") }}
                 </h6>
 
                 <p class="display-6 fw-bold mb-0">
@@ -145,7 +146,7 @@
     {% empty %}
     <div class="col-12">
         <p class="text-muted">
-            No projects to display by genre yet.
+            {% trans "No projects to display by genre yet." %}
         </p>
     </div>
     {% endfor %}
@@ -154,7 +155,7 @@
 
 <div class="card shadow-sm mt-4">
     <div class="card-body">
-        <h2 class="h4 mb-3">Genre Analysis (Pandas)</h2>
+        <h2 class="h4 mb-3">{% trans "Genre Analysis (Pandas)" %}</h2>
 
         {% for genre, total in genre_analysis.items %}
         <div class="d-flex justify-content-between border-bottom py-2">
@@ -162,7 +163,7 @@
             <strong>{{ total }}</strong>
         </div>
         {% empty %}
-        <p class="text-muted">No genre data available.</p>
+        <p class="text-muted">{% trans "No genre data available." %}</p>
         {% endfor %}
     </div>
 </div>
@@ -171,7 +172,7 @@
 <div class="mt-4">
     <a href="{% url 'project_list' %}"
        class="btn btn-primary">
-        View Projects
+        {% trans "View Projects" %}
     </a>
 </div>
 {% endblock %}

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Music Production Manager{% endblock %}</title>
@@ -79,6 +80,26 @@
             box-shadow: 0 0 0 0.2rem rgba(112, 87, 232, 0.15);
         }
 
+        /* Projects search and filters */
+        .project-filters {
+            padding: 18px;
+            margin-bottom: 28px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(30, 32, 48, 0.04);
+        }
+
+        .project-filters .form-control,
+        .project-filters .form-select {
+            min-height: 48px;
+        }
+
+        .project-filters .btn {
+            min-height: 48px;
+            font-weight: 600;
+        }
+
         h1, h2, h3, h4, h5 {
             font-weight: 700;
             letter-spacing: -0.5px;
@@ -100,8 +121,9 @@
         }
 
         .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(30, 32, 48, 0.10);
+            transform: translateY(-5px);
+            box-shadow: 0 14px 32px rgba(30, 32, 48, 0.12);
+            border-color: #d8d0ff;
         }
 
         .project-title {
@@ -304,13 +326,36 @@
     <div class="container">
 
         <a class="navbar-brand" href="{% url 'home' %}">
-            Music Production Manager
+            {% translate "Music Production Manager" %}
         </a>
 
-        <div class="navbar-nav">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
-            <a class="nav-link" href="{% url 'project_list' %}">Projects</a>
-            <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+        <div class="navbar-nav align-items-lg-center">
+            <a class="nav-link" href="{% url 'home' %}">
+                {% translate "Home" %}
+            </a>
+            <a class="nav-link" href="{% url 'project_list' %}">
+                {% translate "Projects" %}
+            </a>
+            <a class="nav-link" href="{% url 'dashboard' %}">
+                {% translate "Dashboard" %}
+            </a>
+
+            <form action="{% url 'set_language' %}" method="post" class="ms-lg-3">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+
+                <div class="d-flex gap-2">
+                    <button type="submit" name="language" value="en"
+                            class="btn btn-sm {% if LANGUAGE_CODE == 'en' %}btn-light{% else %}btn-outline-light{% endif %}">
+                        EN
+                    </button>
+
+                    <button type="submit" name="language" value="lt"
+                            class="btn btn-sm {% if LANGUAGE_CODE == 'lt' %}btn-light{% else %}btn-outline-light{% endif %}">
+                        LT
+                    </button>
+                </div>
+            </form>
         </div>
 
     </div>
